@@ -12,15 +12,21 @@ public class OutlineSelection : MonoBehaviour
     private LayerMask pistolLayerMask;
     private LayerMask chocolateLayerMask;
     private LayerMask sodaLayerMask;
+    private LayerMask knifeLayerMask;
+    private LayerMask photoLayerMask;
     public static bool pistolCheckbox = false;
     public static bool chocolateCheckbox = false;
     public static bool sodaCheckbox = false;
+    public static bool knifeCheckbox = false;   
+    public static bool photoCheckbox = false;
 
     void Start()
     {
         pistolLayerMask = LayerMask.GetMask("Pistol");
         chocolateLayerMask = LayerMask.GetMask("Chocolate");
         sodaLayerMask = LayerMask.GetMask("Soda");
+        knifeLayerMask = LayerMask.GetMask("Knife");
+        photoLayerMask = LayerMask.GetMask("Photo");
     }
 
     void Update()
@@ -53,7 +59,7 @@ public class OutlineSelection : MonoBehaviour
             if (highlight)
             {
                 // Check if the selected object is under the "Objective" layer
-                if (IsInPistolLayer(highlight) || IsInChocolateLayer(highlight) || IsInSodaLayer(highlight))
+                if (IsInPistolLayer(highlight) || IsInChocolateLayer(highlight) || IsInSodaLayer(highlight) || IsInKnifeLayer(highlight) || IsInPhotoLayer(highlight))
                 {
                     if (IsInPistolLayer(highlight))
                     {
@@ -66,6 +72,14 @@ public class OutlineSelection : MonoBehaviour
                     if (IsInSodaLayer(highlight))
                     {
                         sodaCheckbox = true;
+                    }
+                    if (IsInKnifeLayer(highlight))
+                    {
+                        knifeCheckbox = true;
+                    }
+                    if (IsInPhotoLayer(highlight))
+                    {
+                        photoCheckbox = true;
                     }
                     // Disable the GameObject
                     highlight.gameObject.SetActive(false);
@@ -133,5 +147,13 @@ public class OutlineSelection : MonoBehaviour
     bool IsInSodaLayer(Transform obj)
     {
         return ((1 << obj.gameObject.layer) & sodaLayerMask) != 0;
+    }
+    bool IsInKnifeLayer(Transform obj)
+    {
+        return ((1 << obj.gameObject.layer) & knifeLayerMask) != 0;
+    }
+    bool IsInPhotoLayer(Transform obj)
+    {
+        return ((1 << obj.gameObject.layer) & photoLayerMask) != 0;
     }
 }

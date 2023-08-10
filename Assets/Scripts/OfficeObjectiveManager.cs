@@ -11,7 +11,11 @@ public class OfficeObjectiveManager : MonoBehaviour
     private int chocolateNumberID = 1;
     private int sodaNumberID = 2;
 
+    [SerializeField] private GameObject disenableDialogue;
+    [SerializeField] private GameObject oldChapter;
+    [SerializeField] private GameObject newChapter;
     [SerializeField] private GameObject activateMap;
+    public static bool chapterTwoUnlocked = false;
 
     private void Start()
     {
@@ -37,6 +41,10 @@ public class OfficeObjectiveManager : MonoBehaviour
 
         if(OutlineSelection.pistolCheckbox && OutlineSelection.chocolateCheckbox && OutlineSelection.sodaCheckbox)
         {
+            disenableDialogue.SetActive(false);
+            oldChapter.SetActive(false);
+            newChapter.SetActive(true);
+            chapterTwoUnlocked = true;
             activateMap.SetActive(true);
         }
     }
