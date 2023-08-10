@@ -12,10 +12,12 @@ public class OutlineSelection : MonoBehaviour
     private LayerMask pistolLayerMask;
     private LayerMask chocolateLayerMask;
     private LayerMask sodaLayerMask;
+    public static bool pistolCheckbox = false;
+    public static bool chocolateCheckbox = false;
+    public static bool sodaCheckbox = false;
 
     void Start()
     {
-        // Define the layer mask for the "Pistol" layer
         pistolLayerMask = LayerMask.GetMask("Pistol");
         chocolateLayerMask = LayerMask.GetMask("Chocolate");
         sodaLayerMask = LayerMask.GetMask("Soda");
@@ -53,6 +55,18 @@ public class OutlineSelection : MonoBehaviour
                 // Check if the selected object is under the "Objective" layer
                 if (IsInPistolLayer(highlight) || IsInChocolateLayer(highlight) || IsInSodaLayer(highlight))
                 {
+                    if (IsInPistolLayer(highlight))
+                    {
+                        pistolCheckbox = true;
+                    }
+                    if (IsInChocolateLayer(highlight))
+                    {
+                        chocolateCheckbox = true;
+                    }
+                    if (IsInSodaLayer(highlight))
+                    {
+                        sodaCheckbox = true;
+                    }
                     // Disable the GameObject
                     highlight.gameObject.SetActive(false);
                 }

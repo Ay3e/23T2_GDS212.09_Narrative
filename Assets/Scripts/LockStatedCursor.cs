@@ -9,7 +9,7 @@ public class LockStatedCursor : MonoBehaviour
 
     private void Update()
     {
-            Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
+            //Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = true;
     }
